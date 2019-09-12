@@ -138,15 +138,189 @@ function multiplyBy10(number, n) {
  } 
 
 
+///Introduction to Variables
 
 
+ var animal = 'monkey'; 
+ var monkey = 'animal'; 
+ var x = 15; 
+ var y =10; 
+ var variable = 'y3ni?'; 
+ var isHappend = false; 
+ //var isTenEven = 10 % 2 = 0;
+
+var firstName ="Islam"
+var lastName = "Mansour"
+var middleName = "Yousf"
+
+var fullName = firstName+" "+ middleName+" "+lastName;
+
+var result = 1;
+ function counter() { 
+ // TODO: your code here 
+ return result++;
+ } 
 
 
+//Iteration with the while Loop
+
+function sum(n) { 
+ // TODO: your code here 
+ var sum=0;
+ if(n<=0)
+ 	return 0;
+ for(var i =0 ; i<=n;i++){
+ 	sum+= i;
+ }
+ return sum;
+} 
+
+function factorial(n) { 
+ // TODO: your code here 
+ var fact=1;
+ if(n<=0)
+ 	return 1;
+ for(var i =n ; i>0;i--){
+ 	fact*= i;
+ }
+ return fact;
+}
+
+ function repeatString(str, count) { 
+ // TODO: your code here 
+ var result = ""
+
+ for(var i= 0 ; i<count;i++){
+ 	result+=str;
+ }
+ return result;
+}
+
+function counting(n) { 
+ // TODO: your code here 
+ var result = ""
+
+ for(var i= 1 ; i<=n;i++){
+ 	result+=i;
+ 	if(n!== i)
+ 		result+=", "
+ }
+ return result;
+} 
+
+function reverseString(str) { 
+       // TODO: your code here 
+var reversedStr="";      
+var i =str.length-1;
+while(i>=0){
+	reversedStr += str[i]
+	i= i-1;
+ } 
+ return reversedStr;
+}
+
+function countingWhile(n) { 
+ // TODO: your code here 
+ var result = ""
+ var i = 1;
+ while(i<=n) {
+ 	result+=i;
+ 	if(n!== i)
+ 		result+=", "
+ 	i++;
+ }
+ return result;
+} 
+
+//
+//Introduction to Arrays
+
+ [ 1, 3 ,4 ,7,9 ] 
+ ['the','quick','brown','fox' ,'jumped','over',' the lazy', 'dog' ] 
+ var x =[true, false,true]
+
+var favMovies = ["Harry potter","Tangled","Dragons"]
+var lovelyPeople = ["Amal","Mahmoud","Diana"]
+var sports = ["riding bike","swimming","running"]
+
+var firstElement= favMovies[0];
+var lastElement= favMovies[favMovies.length-1];
+
+function firstElementReturn(arrayt){
+	return arrayt[0]
+}
 
 
+function lastElementReturn(arrayt){
+	return arrayt[arrayt.length-1]
+}
+
+var arr = [2, 3, 4]; 
+
+arr.unshift(1)
+arr.unshift(0)
+arr.push(4)
+arr.push(5)
+arr.push(6)
+arr.push(7)
+
+var arr = [5, 7, 9]; 
+var arrPush=arr.push(6); // => length of aaray after addition
+var arrShift = arr.unshift(7) // return the length 
+var arrPop = arr.pop()
+
+ var animals = ['dog', 'elephant', 'zebra'] 
+ animals[0] = 'hippo'; 
 
 
+ var numbers = [4, 9, 7, 2, 1, 8]; 
+ // TODO: your code here 
+ numbers[1]=18;
+ numbers[2]=14;
+ numbers[4]=2
 
+ numbers; // => [4, 18, 14, 2, 2, 8] 
+
+
+ var places = ['snfranisco', 'oacklannd', 'santacrus'] 
+ // TODO: your code here 
+ places[0]= 'san francisco'
+ places[1]='oacklannd'
+ places[2]= 'santa cruz'
+ places; // => ['san francisco', 'oakland', 'santa cruz']
+
+var yd =places.slice(1,2)
+
+var numbers = [3, 2,2 ,7, 5,2,2]; 
+// var x1= numbers.slice(0); 
+// var x2=  numbers.slice(2); 
+// var x3= numbers.slice(0, 2);
+
+function remove(elemnt, array){
+	for(var i =0; i< array.length;i++){
+		if(elemnt===array[i]){
+			array.splice(i,1)
+			console.log(array.length)
+		}
+	}
+	return array;
+}
+
+places.splice(0,2,1);
+
+
+///Array Iteration with while & for
+// sum do it before 
+
+function maxNumber(array){
+	var max = 0;
+	for(var i =0; i<array.length;i++){
+		if(max<array[i]){
+		max = array[i]
+	     }
+     }
+	return max;
+}
 
 
 
