@@ -1,3 +1,5 @@
+
+
 function square(monkey) {
   return monkey* monkey;
 }
@@ -322,17 +324,62 @@ function maxNumber(array){
 	return max;
 }
 
+function maxNumberWithWhile(array){
+	var max = 0;
+	var i = 0;
+	while(i<array.length){
+		if(max<array[i]){
+		max = array[i]
+	     }
+	     i= i + 1
+     }
+	return max;
+}
+
+ var strSplited1= 'the quick brown fox jumped over the lazy dog';
+ var strSplited2='Hello, world!'.split('') 
+ var strSplited3='1,2,3,4,5,6'.split(',')
 
 
+function longestWord(str){
+	var splitedWordArray = str.split(' ')
+	var longestWord=""
+	for(var i=0; i<splitedWordArray.length;i++){
+		if(longestWord.length<splitedWordArray[i].length){
+			longestWord = splitedWordArray[i];
+		}
 
+	}
+	return longestWord;
+}
 
+function removeAnElement(array , number) {
+	var newArray = []
+	for(var i =0; i<array.length;i++){
+		if(array[i]!==number){
+			newArray.push(array[i])
+		}
+	} 
+	return newArray
+}
 
+function findEvenNumber(array , number) {
+	var newArray = []
+	for(var i =0; i<array.length;i++){
+		if(array[i]%2===0){
+			newArray.push(array[i])
+		}
+	} 
+	return newArray
+}
 
-
-
-
-
-
+function countAvg(array) {
+	var sum =0
+	for(var i =0; i<array.length;i++){
+		sum+= array[i]
+	} 
+	return sum/array.length
+}
 
 //
 //
@@ -486,6 +533,34 @@ function cleanByStart(dirtyObj) {
 	return cleanedObj;
 }
  
+ function removeOddValues(obj){
+ 	var newObj ={}
+ 	for(key in obj){
+ 		if(typeof(obj[key])==="number" && obj[key]%2 !==0){
+ 			newObj[key]= obj[key]
+ 		}
+ 	}
+ 	return newObj;
+ }
+
+ function selectObj(obj, keys){
+ 	var newObj ={}
+ 	for(var key in obj ){
+ 		var i = 0
+ 		while(i < keys.length ){
+ 			if(keys[i] === key){
+ 				newObj[key]=obj[key]
+ 			}
+ 			i=i+1
+ 		}
+ 	}
+ 	return newObj
+ }
+
+
+
+
+ //////Data Modling /////////////////
 
 var book = {
 	title : "Alis in wonder Land",
@@ -523,10 +598,41 @@ var books = [book1,book2,book3]
 function displayBooks(books){
 	var result=""
 	for(var i = 0 ; i < books.length; i++){
-		result+= displayBook(book[i])+"\n";
+		result+= i+1+". "+ displayBook(books[i])+"\n";
 	}
+	return result
 }
 
+function searchBook(books ,query){
+	var result=[]
+	for(var i=0 ; i<books.length; i++){
+		if(isMatch(books[i],query)){
+			result.push( books[i])
+		}
+	}
+	return result
+}
+
+function isMatch(book, searchedWord){
+	var searchedWord = searchedWord.toLowerCase()
+	var title = book.title.toLowerCase().split(' ');
+	for(var i=0 ; i< title.length;i++){
+		if(title[i].substr(0,searchedWord.length).indexOf(searchedWord)!==-1){
+			return true;
+		}
+	}
+	return false;
+}
+
+function removeABook(books , bookTitle){
+	var newArray =[]
+	for(var i =0 ; i< books.length; i++){
+		if(books[i].title!== bookTitle){
+			newArray.push(books[i])
+		}
+	}
+	return newArray
+}
 
 
 
