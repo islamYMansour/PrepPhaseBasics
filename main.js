@@ -636,6 +636,679 @@ function removeABook(books , bookTitle){
 
 
 
+// week 2 Higher order functions Islam & Hend
+
+
+
+// 1. 
+ function cube(x) { 
+       return x * x * x; 
+ } 
+
+// this is a function expression
+var cubeResult = function(x) {
+	return x * x * x;
+};
+
+
+
+
+
+ // 2. 
+ function fullname(first, last) { 
+       return first + ' ' + last; 
+ }
+
+// this is a function expression
+ var fullNameResult = function(first, last) {
+ 	return first + ' ' + last;
+ };
+
+ // 3. 
+ function power(base, exp) { 
+       if (exp === 0) { 
+       return 1; 
+       } 
+       return base * power(base, exp - 1); 
+ } 
+ // 4. 
+ function sumCubes(numbers) { 
+       var total = 0; 
+       for (var i = 0; i < numbers.length; i++) { 
+             total = total + cube(numbers[i]); 
+       } 
+       return total; 
+ }
+
+ function each(coll, func) {
+ 	if(Array.isArray(coll)){
+ 		for(var i =0; i< coll.length; i++) {
+ 			func(coll[i],i);
+ 		}
+
+ 	} else {
+ 		for (var key in coll){
+ 			func(coll[key],key)
+ 		}
+ 	}
+ }
+
+function sumSquares(numbers){
+	var total =0;
+	each(numbers, function(number){
+		total += number * number;
+	})
+	return total;	
+}
+
+function sumCubes(numbers){
+	var total = 0;
+	each (numbers, function(number){
+		total += cube(number); 
+	})
+	return total;
+}
+
+function product1 (numbers){
+	var total = 1;
+	each(numbers, function(number) {
+		total *= number;
+	})
+	return total;
+}
+
+
+function cubeAll1 (numbers) {
+	var result = [];
+	each(numbers, function(number) {
+		result.push(cube(number));
+	})
+	return result;
+}
+
+function odds1(numbers) {
+	var result = [];
+	each (numbers, function(number) {
+		if (number % 2 !== 0)
+			result.push(number)
+	})
+	return result;
+}
+
+function evenIndexedEvenLengths (array) {
+	var result = []
+	each(array, function(str,i) {
+		if(!(str.length %2)  && !(i%2)){
+			result.push(array[i])
+		}
+	})
+	return result
+}
+
+function values(obj) {
+	var result = []
+	each(obj,function(value,key){
+		result.push(value)
+	})
+	return result
+}
+
+function keys(obj) {
+	var result = []
+	each(obj,function(value,key){
+		result.push(key)
+	})
+	return result
+}
+
+function keysLongerThan(obj,number){
+	var result = {}
+	each(obj,function(value, key){
+		if(key.length>number){
+			result[key] = value
+		}
+	})
+	return result
+}
+// typeof 1;       // => 'number' 
+
+function incrementValues(obj) {
+	var result = {};
+	each (obj, function(value,key) {
+		if (typeof(value) === 'number'){
+			result[key] = value + 1;
+		} else {
+			result[key] = value;
+		}			
+	})
+	return result;
+}
+
+function objectToArrayOrArrayToObject(coll) {
+
+}
+
+function oddEvenArray(obj) {
+	var resultOdd = [];
+	var resultEven = [];
+	each(obj, function(value, key) {
+		if (value % 2){
+			resultOdd.push(value);
+		} else {
+			resultEven.push(value);
+		}
+	})
+	return resultOdd.concat(resultEven);
+}
+
+function isPrime(num) {
+	for (var i = 2; i <= num/2; i++) {
+		if (num % i === 0){
+			return false
+		}
+	}
+	return true
+}
+
+function isPimeObj(obj) { 
+	var result =[]
+	each(obj,function(value,key){ 
+		if(isPrime(value)){
+			result.push(value)
+		}
+
+	})
+	return result
+}
+
+function map (coll,func){
+	var result = []
+	if(Array.isArray(coll)){
+		each(coll, function(item,i){
+		result.push(func(item,i))
+		})
+	} else {
+		var result = {}
+		each(coll, function(item,key){
+		result[key]=item
+		})
+	}
+	
+	return result
+}
+function fullNameWithMap(array){
+	return map(array, function(obj,i){
+		return fullNameFormat(obj)
+	})
+}
+
+function fullNameFormat(obj) {
+	var result = ""
+			console.log(obj)
+	var name = obj['name']
+	for(var key in name) {
+		result += name[key]+" "
+	}
+	return result
+}
+
+function abs(num){
+	if(num<0) {
+		return -num
+	}
+	return num
+}
+
+function absArray(array) {
+	return map(array, function(item, index) {
+		return abs(item)
+	})
+}
+
+function uppercaseValues(obj){
+	return map(obj, function(value,key) {
+		if(typeof value === 'string') {
+			return value.toUpperCase()
+		}
+			return value;
+		
+	})
+}
+
+
+var operateOnNumbers = function (firstNumber, secondNumber, func) {
+	return func(firstNumber, secondNumber)
+}
+
+//complete the following functions
+
+var addition = function(x, y) {
+	return x + y
+}
+
+var subtraction = function(x,y){
+	return x-y
+}
+
+var multiplication =function(x,y){
+	return x*y
+}
+
+var division =  function(x,y){
+	if(y===0){
+		return 'Can’t divide by Zero'
+	}
+	return x/y
+}
+
+//improve it later 
+
+function selectKey(obj,keys) {
+	var result = {}
+	each(obj, function(value, key) {
+		for(var i =0; i<keys.length ;i++) {
+			if(keys[i] === key){
+				result[key] = value
+			}
+		}
+	})
+return result
+
+}
+
+function pluck(array , certinKey) {
+	var result = []
+	each(array , function (item,i) {
+		each(item ,function(value,key) {
+			if(key === certinKey) {
+				result.push(value)
+			}
+		})
+	})
+	return result
+}
+
+// see if you can use selectKey in the fellow quistion
+
+function extend(destination, source) {
+	each(source, function(value, key) {
+		destination[key] = value;
+	})
+	return destination;
+}
+
+function zip(keys, values){
+	var result = {};
+	each(keys, function(item, index) {
+		result[item] = values[index];
+	})
+	return result;
+}
+
+
+function sortAscending(object) {
+	var result = values(object).sort(function(a, b) {
+  		return a - b;
+	});
+	console.log(result)
+	var output=[];
+	each(object, function(value, key) {
+		if (value === result[output] ){
+			var newObj ={}
+			newObj[key]=value
+			output.push(newObj)
+		}
+	})
+
+	return output;
+}
+
+
+/////////////////// clouser/////////
+
+
+ function makeAccount(initial) {
+     var balance = initial;
+     return {
+
+          withdraw: function(amount) {
+          if (balance - amount >= 0) {
+          balance = balance - amount;
+          return 'Here’s your money: $' + amount;
+     }
+     return 'Insufficient funds.';
+},
+     deposit: function(amount) {
+          balance = balance + amount;
+          return 'Your balance is: $' + balance;
+          }
+
+     };
+}
+
+function counter (initial) {
+	var count =initial;
+	return {
+		countUp: function() {
+			return ++count;
+		},
+		countDown: function() {
+			return --count;
+		},
+		reset: function() {
+			count = initial;
+			return initial;
+		}
+
+	}
+}
+
+function pow (exp) {
+	return function (number) {
+		return number ** exp;
+	}
+}
+
+var square = pow(2);
+var cube = pow(3);
+
+
+function makeStopWatch(){
+	var watch={};
+	watch.time=0;
+	watch.stopId;
+	watch.start=start;
+	watch.stop=stop;
+
+	return watch;
+}
+
+var start= function (){
+
+	var that = this;
+	this.stopId=setInterval(function() {
+    that.time = that.time + 1;
+     console.log('Elapsed time: ' + that.time + 's.');
+     }, 1000);
+}
+
+function stop() {
+   clearInterval(this.stopId);
+}
+
+ function Toaster() {
+     var instance = {};
+
+     instance.name;
+     instance.addToast;
+
+     return instance;
+ }
+
+
+var addToast = function (name) {
+	this.name=name;
+}
+
+var eject = function () {
+	if (typeof this.name === 'undefined') {
+		return 
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function student11 (name , dob, gender,age) {
+	student = {}
+	
+	student['name'] = name
+	student['dob'] =dob
+	student['gender'] = gender
+	student['age'] = age
+
+	return student
+}
+
+
+var std1= student11("Ahmed","15/8/1994","male",25)
+var std2= student11("Ali","17/8/1995","male",24)
+var std3= student11("Amal","15/1/1996","female",23)
+var std4= student11("Doaa","15/6/1994","female",25)
+var std5= student11("Sali","18/8/1994","female",25)
+
+var students =[std1,std2,std3,std4,std5]
+
+// function student (obj){
+// 	result = []
+// 	result.push(obj)
+// 	return result
+// }
+
+function each (obj,func){
+	for(var key in obj){
+		return fun(obj ,key)
+	}
+}
+
+var result = [];
+
+
+
+// use the following helper functions in your solution
+function eachss(coll, f) {
+	if (Array.isArray(coll)) {
+		for (var i = 0; i < coll.length; i++) {
+			f(coll[i], i);
+		}
+	} else {
+		for (var key in coll) {
+			f(coll[key], key);
+		}
+	}
+}
+
+function filterss(array, predicate) {
+	var acc = [];
+	eachss(array, function(element, i) {
+		if (predicate(element, i)) {
+			acc.push(element);
+		}
+	});
+	return acc;
+}
+
+function mapss(array, func) {
+	var acc = [];
+	eachss(array, function(element, i) {
+		acc.push(func(element, i));
+	});
+	return acc;
+}
+
+
+  // Remember to relax :)
+
+
+
+
+//=======================================================================
+/*                                  Q1                                 */
+//=======================================================================
+//Depending on data modeling concept that you have learned:
+// create a factory function called makeComputer that represents computers,
+// what different attributes computers may have? create two computers object from your factory function and save them in one array called computers!
+// Note: please write one or two lines here describing your solution.
+function makeComputer(type , model) {
+    // TODO: Your code here
+    return {
+    	type : type ,
+    	model : model 
+    };
+}
+var comp = makeComputer("sony","1999");
+var comp2= makeComputer("mac","2000");
+var comps = [comp,comp2];
+
+
+
+// write function displayComputer that can be used to display one computer.
+
+function displayComputer(computer) {
+    // TODO: Your code here
+    var res = " ";
+    for(var key in computer){
+    	res = res + computer[key];
+    }
+    return res;
+}
+
+
+//=============================================================================
+/*                                  Q2                                       */
+//=============================================================================
+
+//Write a function that takes an array of strings as a input,and returns an array 
+//of all of those strings, but transformed to upper case. 
+//You can use toUpperCase method to convert a string to upper case.
+//solve it using the most appropriate helper functions(each,map,filter).
+// Note: please write one or two lines here describing your solution.
+// var strArr = ['hello', 'world', 'whirled', 'peas'];
+// uppercaseAll(strArr); ==> [ 'HELLO', 'WORLD', 'WHIRLED', 'PEAS' ]
+
+function uppercaseAll(arrayOfStrings) {
+     // TODO: your code here
+    return mapss(arrayOfStrings,function(element,index){
+     	return element.toUpperCase();
+
+     })
+
+ }
+
+
+//=============================================================================
+/*                                  Q3                                       */
+//=============================================================================
+//write a function that takes array of objects  as an input and returns an array
+//with only the countries that have a population higher than 500 million.
+//solve it using one of the most appropriate helperthe helpers functions(each,map,filter).
+//Here’s the data you’ll work with:
+
+var data = [
+{
+	country: 'China',
+	population: 1409517397,
+},
+{
+	country: 'India',
+	population: 1339180127,
+},
+{
+	country: 'USA',
+	population: 324459463,
+},
+{
+	country: 'Indonesia',
+	population: 263991379,
+}
+];
+// highestPopulation(data); ==> [{country: "China", population: 1409517397},{country: "India", population: 1339180127}]
+// Note: please write one or two lines here describing your solution.
+
+
+function highestPopulation(arrayOfObjects) {
+	// TODO: your code here
+	return filterss(arrayOfObjects,function(element,index){
+		return element.population > 500000000 ;
+	})
+
+}
+
+
+
+//=============================================================================
+/*                              Q4                                           */
+//=============================================================================
+
+//Write a function halveAll that takes an array of numbers as a input and returns an array
+// of all of those numbers halved (divided by two).
+//Note: solve it using the most appropriate helper functions(each,map,filter)
+// var numsArray = [2, 6, 20, 8, 14];
+// halveAll(numsArray); ==> [ 1, 3, 10, 4, 7 ]
+// Note: please write one or two lines here describing your solution.
+
+function halveAll(numbers) {
+	// your code is here
+return mapss(arrayOfStrings,function(element,index){
+     	return elemnt/2;
+
+     })
+}
+
+//=============================================================================
+/*                                  Q5                                       */
+//=============================================================================
+//write a function called values that accepts an object as a parameter, and outputs an array of the object's values.
+//solve it using one of the most appropriate helpers functions(each,map,filter).
+// values({first : 5, second: 'something' , third : 129}) ==> [5, 'something', 129]; 
+// Note: please write one or two lines here describing your solution.
+
+ function values(obj) {
+ 	// your code is here
+ 	var result = []
+ 	each(obj, function(value,key) {
+ 		result.push(value)
+ 	})
+ 	return result
+ }
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
