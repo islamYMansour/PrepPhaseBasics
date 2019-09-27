@@ -381,6 +381,13 @@ function countAvg(array) {
 	return sum/array.length
 }
 
+
+
+
+///more practice 5-2 
+
+
+
 //
 //
 // objects
@@ -1271,24 +1278,69 @@ return mapss(arrayOfStrings,function(element,index){
  }
 
  
+/////////  week 4 //////
+// <img></img>
+// Our img tag doesn't have a src! Add one using jQuery!
+
+$('.image').attr("src","https://cdn.pixabay.com/photo/2016/01/08/11/57/butterfly-1127666_960_720.jpg")
 
 
+function sortArray(array) {
+	for (var i = 0; i < array.length; i++) {
+		for (var j = 0; j < Things.length; j++) {
+		}
+	}
+}
 
 
+function bubbleSort(array) {
+  var done = false;
+  while (!done) {
+    done = true;
+    for (var i = 1; i < array.length; i += 1) {
+      if (array[i - 1] > array[i]) {
+        done = false;
+        var tmp = array[i - 1];
+        array[i - 1] = array[i];
+        array[i] = tmp;
+      }
+    }
+  }
+
+  return array;
+}
+
+var numbers = [12, 10, 15, 11, 14, 13, 16,-1,-100,-8,4,0];
+bubbleSort(numbers);
+console.log(numbers);
 
 
+function moveZero(array) {
+	var x =  filterss(array,function(element, index){
+		if(element === 0) {
+			array.splice(index,1)
+		}
+		return element ===0;
+	})
+	return array.concat(x);
+}
+ var usersData = [ 
+       { user: {email: 'majd@rbk.org', password: '_Majd(2017)'}}, 
+       { user: {email: 'fatema@rbk.org', password: '12345'}}, 
+       { user: {email: 'maher@rbk.org', password: '_M@her2017'}}, 
+              { user: {email: 'maher@rbk.org', password: 'M@her201dfvasef7'}}, 
+       { user: {email: 'maher@rbk.org', password: '_M@her2fefwe017'}}, 
+       { user: {email: 'maher@rbk.org', password: 'M@herw35352017'}}, 
 
-
-
-
-
-
-
-
-
-
-
-
+       { user: {email: 'sahar@rbk.org', password: 'saher2017'}} 
+ ]; 
+function strongPasswords(array) {
+	var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*\_\(\)])(?=.{8,})");
+	return filterss(array , function (element,index) {
+		console.log(element.user.password)
+		return strongRegex.test( element.user.password)
+	})	
+}
 
 
 
